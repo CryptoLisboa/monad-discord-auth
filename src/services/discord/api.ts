@@ -27,7 +27,7 @@ export const fetchGuilds = async (accessToken: string): Promise<Guild[] | undefi
 };
 
 export const fetchGuildMember = async (accessToken: string): Promise<GuildMember | undefined> => {
-  const url = `https://discord.com/api/v10/users/@me/guilds/${process.env.MONAD_DISCORD_SERVER_ID}/member`;
+  const url = `https://discord.com/api/v10/users/@me/guilds/${process.env.MONAD_GUILD_ID}/member`;
   const headers = {
     Accept: 'application/json',
     Authorization: `Bearer ${accessToken}`,

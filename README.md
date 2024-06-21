@@ -32,7 +32,7 @@ This is a Next.js project that integrates Discord authentication using NextAuth 
    NEXTAUTH_URL=http://localhost:3000
    DISCORD_ID=your_discord_id_here
    DISCORD_SECRET=your_discord_secret_here
-   MONAD_DISCORD_SERVER_ID=your_monad_discord_server_id_here
+   MONAD_GUILD_ID=your_MONAD_GUILD_ID_here
    ```
 4. Run the development server:
 

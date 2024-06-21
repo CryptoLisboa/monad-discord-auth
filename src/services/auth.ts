@@ -44,7 +44,7 @@ export const authOptions = {
     // async signIn({ account }: { account: Account }) {
     //   const guilds: Guild[] = (await fetchGuilds(account.access_token)) as unknown as Guild[];
     //   const userIsInMonad = guilds.some(
-    //     (guild: Guild) => guild.id === process.env.MONAD_DISCORD_SERVER_ID,
+    //     (guild: Guild) => guild.id === process.env.MONAD_GUILD_ID,
     //   );
     //   if (!userIsInMonad) {
     //     return '/unauthorized/not-in-monad';
