@@ -41,38 +41,38 @@ export const authOptions = {
   ],
   adapter: PrismaAdapter(prisma),
   callbacks: {
-    async signIn({ account }: { account: Account }) {
-      const guilds: Guild[] = (await fetchGuilds(account.access_token)) as unknown as Guild[];
-      const userIsInMonad = guilds.some(
-        (guild: Guild) => guild.id === process.env.MONAD_DISCORD_SERVER_ID,
-      );
-      if (!userIsInMonad) {
-        return '/unauthorized/not-in-monad';
-      }
-      const userRolesInMonad = await fetchGuildMember(account?.access_token);
-      const url_success = '/protected?roles=' + userRolesInMonad?.roles.join('-');
-      return !!url_success;
-    },
-    async redirect({ url, baseUrl }) {
-      return baseUrl;
-    },
-    async session({ session, token, user }) {
-      return session;
-    },
-    async jwt({ token, user, account, profile, isNewUser }) {
-      return token;
-    },
-    logger: {
-      error(code, metadata) {
-        log.error(code, metadata);
-      },
-      warn(code) {
-        log.warn(code);
-      },
-      debug(code, metadata) {
-        log.debug(code, metadata);
-      },
-    },
+    // async signIn({ account }: { account: Account }) {
+    //   const guilds: Guild[] = (await fetchGuilds(account.access_token)) as unknown as Guild[];
+    //   const userIsInMonad = guilds.some(
+    //     (guild: Guild) => guild.id === process.env.MONAD_DISCORD_SERVER_ID,
+    //   );
+    //   if (!userIsInMonad) {
+    //     return '/unauthorized/not-in-monad';
+    //   }
+    //   const userRolesInMonad = await fetchGuildMember(account?.access_token);
+    //   const url_success = '/protected?roles=' + userRolesInMonad?.roles.join('-');
+    //   return !!url_success;
+    // },
+    // async redirect({ url, baseUrl }) {
+    //   return baseUrl;
+    // },
+    // async session({ session, token, user }) {
+    //   return session;
+    // },
+    // async jwt({ token, user, account, profile, isNewUser }) {
+    //   return token;
+    // },
+    // logger: {
+    //   error(code, metadata) {
+    //     log.error(code, metadata);
+    //   },
+    //   warn(code) {
+    //     log.warn(code);
+    //   },
+    //   debug(code, metadata) {
+    //     log.debug(code, metadata);
+    //   },
+    // },
   },
 };
 
