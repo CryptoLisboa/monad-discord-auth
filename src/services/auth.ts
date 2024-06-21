@@ -2,6 +2,7 @@ import NextAuth from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
 import { fetchGuildMember, fetchGuilds } from "./discord/api";
 import { Account, Guild } from "./discord/types";
+import { User } from "next-auth";
 
 const scopes = ["identify", "email", "guilds", "guilds.members.read"];
 
@@ -38,15 +39,7 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    async signIn({
-      user,
-      account,
-      profile,
-      email,
-      credentials,
-    }: {
-      account: Account;
-    }) {
+    async signIn({ user, account }: { user: User; account: Account }) {
       const guilds: Guild[] = (await fetchGuilds(
         account.access_token,
       )) as unknown as Guild[];
