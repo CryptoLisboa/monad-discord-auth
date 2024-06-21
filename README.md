@@ -19,14 +19,15 @@ This is a Next.js project that integrates Discord authentication using NextAuth 
    ```bash
    git clone https://github.com/your-repository/monad-discord-auth.git
    ```
-2. Install dependencies:
+2. Navigate to the project directory:
    ```bash
    cd monad-discord-auth
-   npm install
-   # or
-   yarn install
    ```
-3. Set up your `.env` file based on the `.env.example` provided in the repository:
+3. Install dependencies using pnpm (recommended for consistency with the project setup):
+   ```bash
+   pnpm install
+   ```
+4. Set up your `.env` file based on the `.env.example` provided in the repository:
    ```plaintext
    AUTH_SECRET=your_auth_secret_here
    NEXTAUTH_URL=http://localhost:3000
@@ -34,12 +35,10 @@ This is a Next.js project that integrates Discord authentication using NextAuth 
    DISCORD_SECRET=your_discord_secret_here
    MONAD_GUILD_ID=your_MONAD_GUILD_ID_here
    ```
-4. Run the development server:
-
+5. Run the development server:
    ```bash
    pnpm dev
    ```
-
    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Deployment
