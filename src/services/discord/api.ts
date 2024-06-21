@@ -1,18 +1,16 @@
-import { Guild } from "./types";
-import { GuildMember } from "./types";
+import { Guild } from './types';
+import { GuildMember } from './types';
 
-export const fetchGuilds = async (
-  accessToken: string,
-): Promise<Guild[] | undefined> => {
-  const url = "https://discord.com/api/v10/users/@me/guilds";
+export const fetchGuilds = async (accessToken: string): Promise<Guild[] | undefined> => {
+  const url = 'https://discord.com/api/v10/users/@me/guilds';
   const headers = {
-    Accept: "application/json",
+    Accept: 'application/json',
     Authorization: `Bearer ${accessToken}`,
   };
 
   try {
     const response = await fetch(url, {
-      method: "GET",
+      method: 'GET',
       headers: headers,
     });
 
@@ -24,22 +22,20 @@ export const fetchGuilds = async (
 
     return data as Guild[];
   } catch (error) {
-    console.error("Error fetching data: ", error);
+    console.error('Error fetching data: ', error);
   }
 };
 
-export const fetchGuildMember = async (
-  accessToken: string,
-): Promise<GuildMember | undefined> => {
-  const url = `https://discord.com/api/v10/users/@me/guilds/${process.env.MONAD_DISCORD_SERVER_ID}/member`;
+export const fetchGuildMember = async (accessToken: string): Promise<GuildMember | undefined> => {
+  const url = `https://discord.com/api/v10/users/@me/guilds/${process.env.MONAD_GUILD_ID}/member`;
   const headers = {
-    Accept: "application/json",
+    Accept: 'application/json',
     Authorization: `Bearer ${accessToken}`,
   };
 
   try {
     const response = await fetch(url, {
-      method: "GET",
+      method: 'GET',
       headers: headers,
     });
 
@@ -50,7 +46,7 @@ export const fetchGuildMember = async (
     const data = await response.json();
     return data as GuildMember;
   } catch (error) {
-    console.error("Failed to fetch guild member:", error);
+    console.error('Failed to fetch guild member:', error);
     return undefined;
   }
 };

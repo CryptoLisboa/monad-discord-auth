@@ -7,4 +7,7 @@ NEXTAUTH_URL=your_nextauth_url_here
 DISCORD_ID=your_discord_id_here
 DISCORD_SECRET=your_discord_secret_here
 
-MONAD_DISCORD_SERVER_ID=monad_discord_server_id_here
+MONAD_GUILD_ID=MONAD_GUILD_ID_here
+
+# POSTGRES
+DATABASE_URL=your_postgres_url_here
