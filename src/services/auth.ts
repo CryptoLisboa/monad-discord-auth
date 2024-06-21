@@ -2,11 +2,8 @@ import NextAuth from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
 import { fetchGuildMember, fetchGuilds } from "./discord/api";
 import { Account, Guild } from "./discord/types";
-import { User } from "next-auth";
 
 const scopes = ["identify", "email", "guilds", "guilds.members.read"];
-
-const MONAD_SERVER_ID = "1036357772826120242";
 
 export const authOptions = {
   // Configure one or more authentication providers
@@ -39,20 +36,17 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    async signIn({ user, account }: { user: User; account: Account }) {
+    async signIn({ account }: { account: Account }) {
       const guilds: Guild[] = (await fetchGuilds(
         account.access_token,
       )) as unknown as Guild[];
       const userIsInMonad = guilds.some(
-        (guild: Guild) => guild.id === MONAD_SERVER_ID,
+        (guild: Guild) => guild.id === process.env.MONAD_DISCORD_SERVER_ID,
       );
       if (!userIsInMonad) {
         return "/unauthorized/not-in-monad";
       }
-      const userRolesInMonad = await fetchGuildMember(
-        account?.access_token,
-        user?.id,
-      );
+      const userRolesInMonad = await fetchGuildMember(account?.access_token);
       console.log("roles: ", JSON.stringify(userRolesInMonad?.roles));
       return true;
     },
