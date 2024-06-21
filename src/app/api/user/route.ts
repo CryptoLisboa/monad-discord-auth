@@ -1,9 +1,8 @@
 import { prisma } from "@/services/db/prisma";
-import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/services/auth";
 
 // create GET service to return the user
-export async function GET(req: NextRequest, res: NextResponse) {
+export async function GET() {
   const session = await auth();
   const expires = session?.expires;
   const userFromSession = session?.user;

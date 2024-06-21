@@ -4,7 +4,7 @@ import { signIn, signOut } from "next-auth/react";
 import { Session } from "next-auth";
 import { GuildMember } from "@/services/discord/types";
 
-export default async function HomeComponent({
+export default function HomeComponent({
   session,
   userIsPartOfMonad,
   userGuildMember,
