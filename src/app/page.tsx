@@ -13,18 +13,21 @@ export default async function Home() {
   let userGuildMember: GuildMember | undefined = undefined;
   try {
     const res = await getUser({
-      userId: session?.user?.id!,
+      userId: session?.user?.id ?? "",
       include: { MonadRoles: true, accounts: true },
     });
     user = res;
     if (!user.MonadRoles) {
-      const userGuilds = await fetchGuilds(user?.accounts[0]?.access_token);
-      userIsPartOfMonad = !!userGuilds?.some(
-        (guild) => guild.id === process.env.MONAD_GUILD_ID,
-      );
+      const accessToken = user?.accounts?.[0]?.access_token;
+      if (accessToken) {
+        const userGuilds = await fetchGuilds(accessToken);
+        userIsPartOfMonad = !!userGuilds?.some(
+          (guild) => guild.id === process.env.MONAD_GUILD_ID,
+        );
+      }
       if (userIsPartOfMonad) {
         userGuildMember = await fetchGuildMember(
-          user?.accounts[0]?.access_token,
+          user?.accounts?.[0]?.access_token ?? "",
         );
         console.log("userGuildMember: ", userGuildMember);
       }

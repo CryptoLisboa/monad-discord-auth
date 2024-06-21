@@ -2,8 +2,6 @@ import NextAuth from 'next-auth';
 import DiscordProvider from 'next-auth/providers/discord';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import { PrismaClient } from '@prisma/client';
-import { fetchGuildMember, fetchGuilds } from './discord/api';
-import { Account, Guild } from './discord/types';
 
 const prisma = new PrismaClient();
 
@@ -76,5 +74,4 @@ export const authOptions = {
   },
 };
 
-// @ts-ignore
 export const { handlers, signIn, signOut, auth } = NextAuth(authOptions);
