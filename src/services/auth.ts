@@ -24,6 +24,8 @@ export const authOptions = {
           imageUrl = `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.${format}`;
         }
 
+        profile.avatar_decoration_data = null;
+
         return {
           ...profile,
           id: profile.id,
@@ -33,7 +35,7 @@ export const authOptions = {
           image: imageUrl,
           banner: profile.banner,
           accentColor: profile.accentColor,
-          avatar_decoration_data: null,
+          avatar_decoration_data: null
         };
       },
     }),
