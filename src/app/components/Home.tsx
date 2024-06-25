@@ -42,7 +42,6 @@ export default function HomeComponent({
           <br />
           {userIsPartOfMonad && (
             <>
-              <h3>These are your roles:</h3>
               <div>{roleNames?.map((roleName) => <div key={roleName}>{roleName}</div>)}</div>
             </>
           )}
