@@ -30,13 +30,16 @@ export default function HomeComponent({
     <div className="z-10 w-full max-w-5xl items-center justify-center font-mono text-sm lg:flex lg:flex-col">
       {session ? (
         <>
-          Signed in as {session?.user?.name} <br />
+          Signed in as {session?.user?.name}
+          <br />
           <button onClick={() => signOut()}>Sign out</button>
+          <br />
           <h2>
             {userIsPartOfMonad
-              ? 'You are part of Monad'
-              : 'You are not part of Monad yet, please join the discord'}
+              ? "You're all set, looks like you're indeed a Nad"
+              : "Oops, looks like you're not a NAD yet :("}
           </h2>
+          <br />
           {userIsPartOfMonad && (
             <>
               <h3>These are your roles:</h3>
@@ -46,8 +49,7 @@ export default function HomeComponent({
         </>
       ) : (
         <>
-          <div>Not signed in</div>
-          <button onClick={() => signIn()}>Click me to Sign in</button>
+          <button onClick={() => signIn()}>Let&apos;s verify if you&apos;re a Nad</button>
         </>
       )}
     </div>
