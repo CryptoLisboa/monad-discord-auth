@@ -33,6 +33,7 @@ export const authOptions = {
           image: imageUrl,
           banner: profile.banner,
           accentColor: profile.accentColor,
+          avatar_decoration_data: null,
         };
       },
     }),
